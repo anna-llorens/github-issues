@@ -1,54 +1,107 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
-import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { buildSearchQuery, IssueState, useSearchQuery } from './graphql/issues-querys';
+import { RadioButton } from './components/RadioButton';
 
 const httpLink = createHttpLink({
   uri: 'https://api.github.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
- // const token = "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";
-  // return the headers to the context so httpLink can read them
+  const token = "";
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: `Bearer ${token}`,
     }
   }
 });
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
-const query = gql`
-query  {
+function App() {
+  const { onSearchTerm, searchResults, loading } = useSearchQuery();
+  const [results, setSearchResults] = useState([]);
+  const [searchTerm, updateSearchTerm] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('');
 
-
-  search(query: "repo:facebook/react in:title,body Firefox inspect", type: ISSUE, first: 10) {
-  nodes {
-    ... on Issue {
-      number
-      title
-      bodyText
-      state
+  const updateSearchResults = () => {
+    if (searchResults) {
+      setSearchResults(searchResults?.filter((result: any) => result?.title));
+      if (paymentMethod === 'Closed') {
+        setSearchResults(searchResults?.filter((result: any) => result.state === IssueState.CLOSED));
+        console.log(results);
+      }
+      if (paymentMethod === 'Open') {
+        setSearchResults(searchResults?.filter((result: any) => result.state === 'OPEN'));
+        console.log(results);
+      }
     }
   }
-}
 
-}
-`
- client.query({query}).then(res => console.log(res.data));
+  // First time renders latest React issue
+  useEffect(() => {
+    onSearchTerm({ variables: { query: buildSearchQuery('') } });
+  }, []);
 
+  useEffect(() => {
+    updateSearchResults();
+  }, [searchResults, paymentMethod]);
 
-function App() {
+  const searchIssues = () => {
+    setSearchResults([])
+    onSearchTerm({ variables: { query: buildSearchQuery(searchTerm) } });
+    updateSearchResults();
+  }
+  const radioChangeHandler = (e: any) => {
+    const state = e.target.value;
+    debugger;
+    if (state === paymentMethod) {
+      setPaymentMethod('');
+    }
+    else {
+      setPaymentMethod(state)
+    }
+  };
+  console.log(paymentMethod, 'paymentMethod');
+  console.log(results, 'paymentMethod');
+
   return (
     <div className="App">
-      My app 
+      <input onChange={(e) => updateSearchTerm(e.target.value)} value={searchTerm}></input>
+      <button onClick={searchIssues}>search</button>
+      <div>
+    <div>Filter by: </div>
+      <RadioButton
+        changed={radioChangeHandler}
+        id="1"
+        isSelected={paymentMethod === "Open"}
+        label="Open"
+        value="Open"
+      />
+      <RadioButton
+        changed={radioChangeHandler}
+        id="2"
+        isSelected={paymentMethod === "Closed"}
+        label="Closed"
+        value="Closed"
+      />
+      </div>
+      {loading ? <h1>Loading . . . </h1> : !results.length ?
+        <div>No results found</div> :
+        results?.map((app: any, index: number) =>
+        (<div key={app.number} className='box'>
+          <div>{app.title}</div>
+          <div>{app.number}</div>
+          <div>{app.state}</div>
+          <div>{app.bodyText}</div>
+        </div>))}
     </div>
   );
 }
