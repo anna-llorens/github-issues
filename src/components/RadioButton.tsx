@@ -1,7 +1,7 @@
 export const RadioButton = (props: any) => {
   const { changed, id, isSelected, label, value } = props;
   return (
-    <div className="RadioButton">
+    <span className="RadioButton">
       <input
         id={id}
         onClick={changed}
@@ -11,6 +11,6 @@ export const RadioButton = (props: any) => {
         checked={isSelected}
       />
       <label htmlFor={id}>{label}</label>
-    </div>
+    </span>
   );
 };

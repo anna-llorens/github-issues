@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
+import parse from 'html-react-parser';
+import './Search.scss';
 
-import './App.css';
+import './App.scss';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { buildSearchQuery, IssueState, useSearchQuery } from './graphql/issues-querys';
 import { RadioButton } from './components/RadioButton';
+import { Button } from './components/Button';
 
 const httpLink = createHttpLink({
   uri: 'https://api.github.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = "";
   return {
     headers: {
       ...headers,
-      authorization: `Bearer ${token}`,
+      Authorization: `bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
     }
   }
 });
@@ -33,23 +35,11 @@ function App() {
 
   const updateSearchResults = () => {
     if (searchResults) {
-      setSearchResults(searchResults?.filter((result: any) => result?.title));
-      if (paymentMethod === 'Closed') {
-        setSearchResults(searchResults?.filter((result: any) => result.state === IssueState.CLOSED));
-        console.log(results);
-      }
-      if (paymentMethod === 'Open') {
-        setSearchResults(searchResults?.filter((result: any) => result.state === 'OPEN'));
-        console.log(results);
-      }
+      setSearchResults(!paymentMethod ?
+        searchResults?.filter((result: any) => result?.title) :
+        searchResults?.filter((result: any) => result.state === paymentMethod))
     }
   }
-
-  // First time renders latest React issue
-  useEffect(() => {
-    onSearchTerm({ variables: { query: buildSearchQuery('') } });
-  }, []);
-
   useEffect(() => {
     updateSearchResults();
   }, [searchResults, paymentMethod]);
@@ -59,48 +49,48 @@ function App() {
     onSearchTerm({ variables: { query: buildSearchQuery(searchTerm) } });
     updateSearchResults();
   }
+
   const radioChangeHandler = (e: any) => {
     const state = e.target.value;
-    debugger;
-    if (state === paymentMethod) {
-      setPaymentMethod('');
-    }
-    else {
-      setPaymentMethod(state)
-    }
+    state === paymentMethod ?
+      setPaymentMethod('') :
+      setPaymentMethod(state);
   };
-  console.log(paymentMethod, 'paymentMethod');
-  console.log(results, 'paymentMethod');
 
   return (
-    <div className="App">
-      <input onChange={(e) => updateSearchTerm(e.target.value)} value={searchTerm}></input>
-      <button onClick={searchIssues}>search</button>
+    <div className="app">
+      <div className='search'>
+        <input onChange={(e) => updateSearchTerm(e.target.value)}
+          value={searchTerm} 
+          placeholder={'Search issue'}/>
+        <Button onClick={searchIssues}>search</Button>
+      </div>
+
       <div>
-    <div>Filter by: </div>
-      <RadioButton
-        changed={radioChangeHandler}
-        id="1"
-        isSelected={paymentMethod === "Open"}
-        label="Open"
-        value="Open"
-      />
-      <RadioButton
-        changed={radioChangeHandler}
-        id="2"
-        isSelected={paymentMethod === "Closed"}
-        label="Closed"
-        value="Closed"
-      />
+        <span className='filterby'>Filter by: </span>
+        <RadioButton
+          changed={radioChangeHandler}
+          id="1"
+          isSelected={paymentMethod === IssueState.OPEN}
+          label='Open'
+          value={IssueState.OPEN}
+        />
+        <RadioButton
+          changed={radioChangeHandler}
+          id="2"
+          isSelected={paymentMethod === IssueState.CLOSED}
+          label="Closed"
+          value={IssueState.CLOSED}
+        />
       </div>
       {loading ? <h1>Loading . . . </h1> : !results.length ?
         <div>No results found</div> :
-        results?.map((app: any, index: number) =>
+        results?.map((app: any) =>
         (<div key={app.number} className='box'>
-          <div>{app.title}</div>
-          <div>{app.number}</div>
-          <div>{app.state}</div>
-          <div>{app.bodyText}</div>
+          <h3>{parse(app.title)}  <span className='issue-number'>#{app.number}</span></h3>
+          <div className={`state ${app.state === IssueState.CLOSED ? 'closed' : 'open'} `}>{app.state}</div>
+          <a href={app.bodyUrl} target="_blank" rel="noreferrer">Visit on github</a>
+          <div>{parse(app.bodyHTML)}</div>
         </div>))}
     </div>
   );

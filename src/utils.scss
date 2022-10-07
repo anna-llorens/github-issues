@@ -1,0 +1,47 @@
+// Colors
+$gray-0: rgba(0, 0, 0, 0.08);
+$gray-1: #cfd0d2;
+$gray-2: #999999;
+$gray-3: #666666;
+$gray-4: #f0f2f5;
+$gray-5: #f1f1f1;
+
+$blue: hsl(214, 82%, 42%);
+$blue-1: #b7d4fa;
+$blue-2: #1877f2;
+
+$red: #bf1f1f;
+$white: #ffffff;
+
+// spacing
+$space-4: 4px;
+$space-8: 8px;
+$space-12: 12px;
+$space-16: 16px;
+$space-24: 24px;
+$space-32: 32px;
+
+// mixins
+@mixin box-shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+@mixin box-container {
+  padding: 20px;
+  border: 1px solid $gray-1;
+  border-radius: $space-8;
+  background-color: $white;
+  @include box-shadow;
+}
+@mixin display-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin text-ellipsis($lines: 1) {
+  overflow: clip;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}

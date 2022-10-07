@@ -3072,7 +3072,7 @@ check-types@^11.1.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/check-types/-/check-types-11.1.2.tgz#86a7c12bf5539f6324eb0e70ca8896c0e38f3e2f"
   integrity sha1-hqfBK/VTn2Mk6w5wyoiWwOOPPi8=
 
-chokidar@^3.4.2, chokidar@^3.5.3:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.2, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha1-HPN8hwe5Mr0a8a4iwEMuKs0ZA70=
@@ -3734,12 +3734,21 @@ dom-serializer@^1.0.1:
     domhandler "^4.2.0"
     entities "^2.0.0"
 
+dom-serializer@^2.0.0:
+  version "2.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dom-serializer/-/dom-serializer-2.0.0.tgz#e41b802e1eedf9f6cae183ce5e622d789d7d8e53"
+  integrity sha1-5BuALh7t+fbK4YPOXmIteJ19jlM=
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    entities "^4.2.0"
+
 domelementtype@1:
   version "1.3.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
   integrity sha1-0EjESzew0Qp/Kj1f7j9DM9eQSB8=
 
-domelementtype@^2.0.1, domelementtype@^2.2.0:
+domelementtype@^2.0.1, domelementtype@^2.2.0, domelementtype@^2.3.0:
   version "2.3.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domelementtype/-/domelementtype-2.3.0.tgz#5c45e8e869952626331d7aab326d01daf65d589d"
   integrity sha1-XEXo6GmVJiYzHXqrMm0B2vZdWJ0=
@@ -3750,6 +3759,13 @@ domexception@^2.0.1:
   integrity sha1-+0Su+6eT4VdLCvau0oAdBXUp8wQ=
   dependencies:
     webidl-conversions "^5.0.0"
+
+domhandler@5.0.3, domhandler@^5.0.1, domhandler@^5.0.2:
+  version "5.0.3"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domhandler/-/domhandler-5.0.3.tgz#cc385f7f751f1d1fc650c21374804254538c7d31"
+  integrity sha1-zDhff3UfHR/GUMITdIBCVFOMfTE=
+  dependencies:
+    domelementtype "^2.3.0"
 
 domhandler@^4.0.0, domhandler@^4.2.0, domhandler@^4.3.1:
   version "4.3.1"
@@ -3775,6 +3791,15 @@ domutils@^2.5.2, domutils@^2.8.0:
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
 
+domutils@^3.0.1:
+  version "3.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domutils/-/domutils-3.0.1.tgz#696b3875238338cb186b6c0612bd4901c89a4f1c"
+  integrity sha1-aWs4dSODOMsYa2wGEr1JAciaTxw=
+  dependencies:
+    dom-serializer "^2.0.0"
+    domelementtype "^2.3.0"
+    domhandler "^5.0.1"
+
 dot-case@^3.0.4:
   version "3.0.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dot-case/-/dot-case-3.0.4.tgz#9b2b670d00a431667a8a75ba29cd1b98809ce751"
@@ -3794,9 +3819,9 @@ dotenv@^10.0.0:
   integrity sha1-PUInuPuV+BCWzdK2ZlP7LHCFuoE=
 
 dotenv@^16.0.2:
-  version "16.0.2"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dotenv/-/dotenv-16.0.2.tgz"
-  integrity sha1-Cw+GUsAWo4WO95UCRQjN3Ev/xb8=
+  version "16.0.3"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha1-EVrsQrrFBT2zxFbbMMwkOlqDagc=
 
 duplexer@^0.1.2:
   version "0.1.2"
@@ -3862,6 +3887,11 @@ entities@^2.0.0:
   version "2.2.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
   integrity sha1-CY3JDruD2N/6CJ1VJWs1HTTE2lU=
+
+entities@^4.2.0, entities@^4.3.0:
+  version "4.4.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/entities/-/entities-4.4.0.tgz#97bdaba170339446495e653cfd2db78962900174"
+  integrity sha1-l72roXAzlEZJXmU8/S23iWKQAXQ=
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -4781,6 +4811,14 @@ hpack.js@^2.1.6:
     readable-stream "^2.0.1"
     wbuf "^1.1.0"
 
+html-dom-parser@3.1.2:
+  version "3.1.2"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-dom-parser/-/html-dom-parser-3.1.2.tgz#c137c42df80e17d185ff35a806925d96cc73f408"
+  integrity sha1-wTfELfgOF9GF/zWoBpJdlsxz9Ag=
+  dependencies:
+    domhandler "5.0.3"
+    htmlparser2 "8.0.1"
+
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-encoding-sniffer/-/html-encoding-sniffer-2.0.1.tgz#42a6dc4fd33f00281176e8b23759ca4e4fa185f3"
@@ -4811,6 +4849,16 @@ html-minifier-terser@^6.0.2:
     relateurl "^0.2.7"
     terser "^5.10.0"
 
+html-react-parser@^3.0.4:
+  version "3.0.4"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-react-parser/-/html-react-parser-3.0.4.tgz#6a6a115a011dfdadd901ca9d2ed80fa5390647e5"
+  integrity sha1-amoRWgEd/a3ZAcqdLtgPpTkGR+U=
+  dependencies:
+    domhandler "5.0.3"
+    html-dom-parser "3.1.2"
+    react-property "2.0.0"
+    style-to-js "1.1.1"
+
 html-webpack-plugin@^5.5.0:
   version "5.5.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-webpack-plugin/-/html-webpack-plugin-5.5.0.tgz#c3911936f57681c1f9f4d8b68c158cd9dfe52f50"
@@ -4821,6 +4869,16 @@ html-webpack-plugin@^5.5.0:
     lodash "^4.17.21"
     pretty-error "^4.0.0"
     tapable "^2.0.0"
+
+htmlparser2@8.0.1:
+  version "8.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/htmlparser2/-/htmlparser2-8.0.1.tgz#abaa985474fcefe269bc761a779b544d7196d010"
+  integrity sha1-q6qYVHT87+JpvHYad5tUTXGW0BA=
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    domutils "^3.0.1"
+    entities "^4.3.0"
 
 htmlparser2@^6.1.0:
   version "6.1.0"
@@ -4946,6 +5004,11 @@ immer@^9.0.7:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/immer/-/immer-9.0.15.tgz#0b9169e5b1d22137aba7d43f8a81a495dd1b62dc"
   integrity sha1-C5Fp5bHSITerp9Q/ioGkld0bYtw=
 
+immutable@^4.0.0:
+  version "4.1.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+  integrity sha1-95V4fw23gBgzB7nrIJH8rB9vr+8=
+
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -4994,6 +5057,11 @@ ini@^1.3.5:
   version "1.3.8"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha1-op2kJbSIBvNHZ6Tvzjlyaa8oQyw=
+
+inline-style-parser@0.1.1:
+  version "0.1.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
+  integrity sha1-7Io7QpJ06cCh8cT/qUU6f+9yzqE=
 
 internal-slot@^1.0.3:
   version "1.0.3"
@@ -7408,6 +7476,11 @@ react-is@^18.0.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-property@2.0.0:
+  version "2.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-property/-/react-property-2.0.0.tgz#2156ba9d85fa4741faf1918b38efc1eae3c6a136"
+  integrity sha1-IVa6nYX6R0H68ZGLOO/B6uPGoTY=
+
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
@@ -7758,6 +7831,15 @@ sass-loader@^12.3.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
+sass@^1.55.0:
+  version "1.55.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/sass/-/sass-1.55.0.tgz#0c4d3c293cfe8f8a2e8d3b666e1cf1bff8065d1c"
+  integrity sha1-DE08KTz+j4oujTtmbhzxv/gGXRw=
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
 sax@~1.2.4:
   version "1.2.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
@@ -7964,7 +8046,7 @@ source-list-map@^2.0.0, source-list-map@^2.0.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha1-OZO9hzv8SEecyp6jpUeDXHwVSzQ=
 
-source-map-js@^1.0.1, source-map-js@^1.0.2:
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha1-rbw2HZxi3zgBJefxYfccgm8eSQw=
@@ -8198,6 +8280,20 @@ style-loader@^3.3.1:
   version "3.3.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/style-loader/-/style-loader-3.3.1.tgz#057dfa6b3d4d7c7064462830f9113ed417d38575"
   integrity sha1-BX36az1NfHBkRigw+RE+1BfThXU=
+
+style-to-js@1.1.1:
+  version "1.1.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/style-to-js/-/style-to-js-1.1.1.tgz#417786986cda61d4525c80aed9d1123a6a7af9b8"
+  integrity sha1-QXeGmGzaYdRSXICu2dESOmp6+bg=
+  dependencies:
+    style-to-object "0.3.0"
+
+style-to-object@0.3.0:
+  version "0.3.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/style-to-object/-/style-to-object-0.3.0.tgz#b1b790d205991cc783801967214979ee19a76e46"
+  integrity sha1-sbeQ0gWZHMeDgBlnIUl57hmnbkY=
+  dependencies:
+    inline-style-parser "0.1.1"
 
 stylehacks@^5.1.0:
   version "5.1.0"

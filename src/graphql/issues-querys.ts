@@ -1,4 +1,5 @@
 import { gql, useLazyQuery } from "@apollo/client";
+import { useEffect } from "react";
 
 export enum IssueState {
   OPEN = "OPEN",
@@ -6,12 +7,13 @@ export enum IssueState {
 }
 
 export const useSearchQuery = () => {
-  const [onSearchTerm, { data, loading }] = useLazyQuery(SEARCH_REPO);
-
-  const searchResults =  data?.search.nodes;
-  return { onSearchTerm, loading, searchResults};
+  const [onSearchTerm, { data, loading, error }] = useLazyQuery(SEARCH_REPO, { variables: { query: buildSearchQuery("") } });
+  const searchResults = data?.search.nodes;
+  useEffect(() => {
+    onSearchTerm();
+  }, []);
+  return { onSearchTerm, searchResults, loading, error };
 };
-
 
 export const buildSearchQuery = (searchTerm: String, state?: IssueState) =>
   `repo:facebook/react ${state ? ` state:${state} ` : ""}
@@ -24,8 +26,10 @@ const SEARCH_REPO = gql`
         ... on Issue {
           number
           title
-          bodyText
           state
+          bodyUrl
+          createdAt
+          bodyHTML
         }
       }
     }
