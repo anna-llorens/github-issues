@@ -1,52 +1,26 @@
 @import "src/utils";
-.app {
-  margin: 20px;
-}
-.search {
-  width: 100%;
+.header {
+  margin: 0;
+  background-color: $white;
   display: flex;
-  min-width: 200px;
-  margin-bottom: 10px;
-  input {
-    width: 500px;
-    border: 1px solid transparent;
-    background-color: $gray-5;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: $space-4;
-    margin: 0 $space-8 0 $space-24;
+  justify-content: space-between;
+  padding: $space-12;
+  @include box-shadow;
+  .content {
+    display: flex;
+    width: 400px;
   }
-  input[type="text"] {
-    background-color: $gray-5;
-    width: 100%;
+  .app {
+    margin: 20px;
   }
-}
-.filterby {
-  margin-left: 28px;
-}
-
-.state {
-  display: inline-block;
-  padding: 5px 12px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-align: center;
-  white-space: nowrap;
-  border-radius: 2em;
-  color: white;
-  margin-right: 10px;
-  &.closed {
-    background-color: #8957e5;
+  .title {
+    text-align: end;
+    font-size: 24px;
   }
-  &.open {
-    background-color: #238636;
+  // Hide title small screens
+  @media screen and (max-width: 950px) {
+    .title {
+      display: none;
+    }
   }
 }
-
-.issue-number {
-  font-weight: lighter;
-  color: $gray-3;
-}
-
-
