@@ -9,7 +9,6 @@ export const SEARCH_REPO = gql`
           title
           state
           bodyUrl
-          createdAt
           bodyHTML
         }
       }

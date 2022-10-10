@@ -9,7 +9,7 @@ export const IssuesList = () => {
   return <div className='issues-list'>
     {error ? <h1>{error.message}</h1> :
       (loading ? <h1>Loading . . . </h1> :
-        (!results.length ? <div>No results found</div> :
+        (!results?.length ? <div>No results found</div> :
           results?.map((issue: any) => <IssueCard
             key={issue.number}
             issue={issue} />)))}
