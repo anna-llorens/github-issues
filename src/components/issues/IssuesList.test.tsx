@@ -7,9 +7,9 @@ import { IssuesList } from './IssuesList';
 describe('Issues list test cases', () => {
   it('should render 2 issues', async () => {
     renderWithProvider(<IssuesList />, [issue1, issue2])
-    // article 1 
+    // issue 1 
     expect(await screen.findByText(issue1.title)).toBeInTheDocument();
-    // Article 2
+    // issue 2
     expect(await screen.findByText(issue2.title)).toBeInTheDocument();
   });
   it('should be loading state', async () => {
