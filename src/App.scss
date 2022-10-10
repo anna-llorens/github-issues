@@ -1,26 +1,15 @@
 @import "src/utils";
 .header {
-  margin: 0;
+  z-index: 1;
+  top: 0;
+  width: 100%;
   background-color: $white;
-  display: flex;
-  justify-content: space-between;
-  padding: $space-12;
+  padding: 20px 20px 0 20px;
+  position: fixed;
+  height: 80px;
   @include box-shadow;
-  .content {
-    display: flex;
-    width: 400px;
-  }
-  .app {
-    margin: 20px;
-  }
-  .title {
-    text-align: end;
-    font-size: 24px;
-  }
-  // Hide title small screens
-  @media screen and (max-width: 950px) {
-    .title {
-      display: none;
-    }
-  }
+}
+
+.issues-list {
+  margin: 120px 20px;
 }

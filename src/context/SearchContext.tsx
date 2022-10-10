@@ -5,7 +5,7 @@ export const SearchContext = createContext<any>({});
 
 
 export const SearchProvider = ({ children }: any) => {
-  const { onSearchTerm, searchResults, loading } = useSearchQuery();
+  const { onSearchTerm, searchResults, loading, error } = useSearchQuery();
   const [results, setSearchResults] = useState([]);
   const [issueState, setIssuesState] = useState('');
 
@@ -33,7 +33,8 @@ export const SearchProvider = ({ children }: any) => {
       results,
       setIssuesState,
       loading,
-      searchIssues
+      searchIssues,
+      error
     }}>{children}
   </SearchContext.Provider>
 }
