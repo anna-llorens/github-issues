@@ -19,6 +19,8 @@ From the root directory run
 ```sh
 yarn && yarn start
 ```
+
+
 ## 📝 Main features
 - By default shows the latest issues from the Facebook/React repo
 - Renders the Issues list with a preview
@@ -32,6 +34,7 @@ To run the frontend Unit tests:
  yarn test
 ```
 
+
 ## ℹ️ Technologies 
 
 - [React](https://reactjs.org/) React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
@@ -41,3 +44,7 @@ To run the frontend Unit tests:
 - [Sass/Scss](http://sass-lang.com/): Sass is an extension of CSS, adding nested rules, variables, mixins, selector inheritance, and more. It's translated to well-formatted, standard CSS using the command line tool or a web-framework plugin.
 
 - [Eslint](https://eslint.org/): Find and fix problems in your JavaScript code. ESLint statically analyzes your code to quickly find problems.
+
+## ✍️ Authors
+
+[Anna Llorens](https://github.com/symphony-annaLlorens)
